@@ -1,0 +1,136 @@
+.background {
+    background-color: #f7c5cd;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .ui.bottom.attached.tab.segment.active.tab1 {
+    background-color: #fccde5;
+  }
+  
+  .shape1 {
+    position: fixed;
+    top: 0;
+    right: -1900px;
+    transform: translateY(-50%);
+    transform-origin: top right;
+  }
+  
+  .shape2 {
+    position: fixed;
+    bottom: 0;
+    left: -1900px;
+    transform: translateY(50%);
+    transform-origin: bottom left;
+  }
+  .zin{
+    z-index: -1;
+  }
+  
+  
+.home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  
+  .header-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1c1d1;
+    background-image: linear-gradient(to bottom right, #f1c1d1, #dfe4ea);
+    color: #fff;
+    padding: 50px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .header-container:hover {
+    background-color: #dfe4ea;
+    background-image: linear-gradient(to bottom right, #dfe4ea, #f1c1d1);
+  }
+  
+  .about-container {
+    flex: 1;
+    background-color: #fff;
+    padding: 50px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .about-container:hover {
+    background-color: #f1c1d1;
+  }
+  
+  .footer-container {
+    background-color: #f1c1d1;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+  }
+  
+
+  /* Estilos para el componente Tab */
+.my-tab {
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+/* Estilos para los botones del componente Tab */
+.my-tab .menu .item {
+  background-color: #ffb6c1 !important;
+  color: white !important;
+  border-radius: 5px 5px 0 0 !important;
+}
+
+/* Estilos para los paneles del componente Tab */
+.my-tab-pane {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid #ffb6c1;
+}
+
+/* Estilos para el componente Form */
+.my-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Estilos para los inputs del componente Form */
+.my-form input,
+.my-form textarea {
+  background-color: #f7f7f7 !important;
+  color: #555555 !important;
+  border: none !important;
+  border-radius: 5px !important;
+  padding: 10px !important;
+}
+
+/* Estilos para el botón de enviar del componente Form */
+.my-form button {
+  background-color: #ffb6c
+}
+/* Estilos adicionales para el botón de enviar del componente Form */
+.my-form button {
+  background-color: #ffb6c1 !important;
+  color: white !important;
+  border-radius: 5px !important;
+  margin-top: 10px !important;
+  }
+  
+  .my-form button:hover {
+  background-color: #ff94a4 !important;
+  }
+  
+  /* Estilos para las etiquetas de los inputs del componente Form */
+  .my-form label {
+  color: #777777 !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  margin-bottom: 5px !important;
+  }
