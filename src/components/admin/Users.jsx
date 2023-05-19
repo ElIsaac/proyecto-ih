@@ -1,13 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Tab, Header, Icon, Container, Divider } from 'semantic-ui-react';
 import _UserList from '../partials/Users/_UserList'
 import _UserForm from '../partials/Users/_UserForm'
+import { AppContext } from '../../context/AppProvider';
 
-import { getUsers } from '../../api/apiCalls'
 
 const Users = () => {
-  const users = getUsers()
-  console.log(users)
+  const {users} = useContext( AppContext );
+  
   
   const panes = [
     { menuItem: 'Editar/eliminar', render: () => <Tab.Pane style={{ backgroundColor: 'rgba(0, 0, 0, 0)', border: 0 }}> < _UserList users={users} /> </Tab.Pane> },

@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Card, Image, Header, Icon, Container, Modal } from 'semantic-ui-react';
 
 import ModalDelete from '../_ModalDelete'
 import ModalEdit from '../_ModalEdit'
 import _ProductForm from './_ProductForm'
+import { AppContext } from '../../../context/AppProvider';
 
 const _ProductList = ({ products }) => {
+    const {updateProducts} = useContext( AppContext );
     const [openDeleteModal, setOpenDeleteModal] = useState(Array(products.length).fill(false))
     const [openEditModal, setOpenEditModal] = useState(Array(products.length).fill(false))
 
@@ -20,9 +22,24 @@ const _ProductList = ({ products }) => {
         openCopy[index] = false
         setModalOpen(openCopy)
     }
-    const handleDelete = (name) => {
-        console.log("delete ", name)
-    }
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3000/productos/${id}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                console.log(`Producto con ID ${id} eliminado correctamente`);
+                updateProducts();
+                // Realiza cualquier otra acción necesaria después de eliminar el producto
+            } else {
+                console.error('Error al eliminar el producto');
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+        }
+    };
+
 
     return (
         <>
@@ -43,14 +60,14 @@ const _ProductList = ({ products }) => {
                         </Card.Content>
                         <Card.Content extra>
                             <div className='ui two buttons'>
-                                <Button basic color='green' onClick={() => handleOpen(index,openEditModal, setOpenEditModal)}>
+                                <Button basic color='green' onClick={() => handleOpen(index, openEditModal, setOpenEditModal)}>
                                     Editar
                                 </Button>
-                                <Button basic color='red' onClick={() => handleOpen(index,openDeleteModal, setOpenDeleteModal)}>
+                                <Button basic color='red' onClick={() => handleOpen(index, openDeleteModal, setOpenDeleteModal)}>
                                     Eliminar
                                 </Button>
-                                <ModalDelete setOpen={()=>handleClose(index, openDeleteModal, setOpenDeleteModal)}  open={openDeleteModal[index]} deleteFunction={handleDelete} data={product}/> 
-                                <ModalEdit setOpen={()=>handleClose(index, openEditModal, setOpenEditModal)}  open={openEditModal[index]} component={_ProductForm} data={product} /> 
+                                <ModalDelete setOpen={() => handleClose(index, openDeleteModal, setOpenDeleteModal)} open={openDeleteModal[index]} deleteFunction={handleDelete} data={product} />
+                                <ModalEdit setOpen={() => handleClose(index, openEditModal, setOpenEditModal)} open={openEditModal[index]} component={_ProductForm} data={product} />
                             </div>
                         </Card.Content>
                     </Card>

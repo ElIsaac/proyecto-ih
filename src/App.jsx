@@ -1,65 +1,34 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-
-import Products from "./components/admin/Products.jsx"
-import Stock from "./components/admin/Stock.jsx"
-import Users from "./components/admin/Users.jsx"
-
-import Appointments from "./components/costumer/Appointments.jsx"
-
-import Inventory from "./components/sales/Inventory.jsx"
-import NewSale from "./components/sales/NewSale.jsx"
-
-import Home from "./components/Home.jsx"
-
-import Login from './components/auth/Login.jsx'
-
-import NotFound from './components/NotFound.jsx'
-import Navbar from './components/Navbar.jsx'
+import React, { useState, createContext } from 'react'
+import { Grid } from 'semantic-ui-react';
+import AppRouter from './routes/routes.jsx'
 import Background from './Background.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import Navbar from './components/Navbar.jsx';
 
 export default function App() {
 
 
-  const clienteItems = [{ id: 1, title: 'Citas', path: '/cliente/citas' }];
-
-  const renderMenuItems = (items) => {
-    return items.map((item) => (
-      <Menu.Item key={item.id} as={Link} to={item.path}>
-        {item.title}
-      </Menu.Item>
-    ));
-  };
-
   return (
-    <BrowserRouter>
-    
-      <Routes>
-        
-        <Route path="/" element={<Home />} />
+    <>
+      <BrowserRouter>
 
-        <Route path="/admin">
-          <Route path="productos" element={<Products />} />
-          <Route path="stock" element={<Stock />} />
-          <Route path="usuarios" element={<Users />} />
-        </Route>
+        <Background className="background zin" />
 
-        <Route path="/vendedor">
-          <Route path="ventas" element={<NewSale />} />
-          <Route path="inventario" element={<Inventory />} />
-        </Route>
+        <Grid>
+          <Grid.Row>
 
-        <Route path="/cliente">
-          <Route path="citas" element={<Appointments />} />
-        </Route>
+            <Grid.Column width={2}>
+                <Navbar className="full-height" />
+            </Grid.Column>
 
-        <Route path="/auth">
-          <Route path="login" element={<Login />} />
-        </Route>
+            <Grid.Column width={14}>
+              <AppRouter />
+            </Grid.Column>
 
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </BrowserRouter>
+          </Grid.Row>
+        </Grid>
 
+      </BrowserRouter>
+    </>
   )
 };

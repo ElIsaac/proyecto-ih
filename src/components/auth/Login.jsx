@@ -21,9 +21,33 @@ const LoginForm = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = () => {
-    console.log(`Email: ${email} Password: ${password}`);
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/usuarios/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al iniciar sesión');
+      }
+
+      const data = await response.json();
+      const { token } = data;
+
+      localStorage.setItem('token', token);
+
+      // Realizar acciones adicionales después de guardar el token
+
+    } catch (error) {
+      console.log(error);
+      // Manejar el error de alguna manera apropiada
+    }
   };
+
 
   return (
     <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>

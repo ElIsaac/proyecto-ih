@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Card, Image, Header, Icon, Container, Modal } from 'semantic-ui-react';
 
 import ModalDelete from '../_ModalDelete'
 import ModalEdit from '../_ModalEdit'
 import _UserForm from './_UserForm'
+import { AppContext } from '../../../context/AppProvider';
 
 const _UserList = ({ users }) => {
+    const { updateUsers } = useContext( AppContext );
     const [openDeleteModal, setOpenDeleteModal] = useState(Array(users.length).fill(false))
     const [openEditModal, setOpenEditModal] = useState(Array(users.length).fill(false))
 
@@ -21,9 +23,25 @@ const _UserList = ({ users }) => {
         setModalOpen(openCopy)
     }
 
-    const handleDelete = (name) => {
-        console.log("delete ", name)
-    }
+    
+
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3000/usuarios/${id}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                console.log(`Producto con ID ${id} eliminado correctamente`);
+                updateUsers();
+                // Realiza cualquier otra acción necesaria después de eliminar el producto
+            } else {
+                console.error('Error al eliminar el producto');
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
+        }
+    };
 
     return (
         <>

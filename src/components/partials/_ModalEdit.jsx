@@ -5,12 +5,10 @@ import ProductForm from './Products/_ProductForm'
 function _ModalEdit({open, setOpen, data, component}) {
 
     const ChildComponent = component
+    const handleClose = () => {
+        setOpen(false);
+      };
     
-    const handleClose = () => setOpen(false)
-    const handleEdit = (data) => {
-        console.log("edit")
-        console.log(data)
-    }
 
     return (
         <Modal
@@ -22,11 +20,11 @@ function _ModalEdit({open, setOpen, data, component}) {
             <Modal.Content >
                 <Modal.Description>
                     {/* <ProductForm data={data} submitFunction={handleEdit} /> */}
-                    <ChildComponent data={data} submitFunction={handleEdit} />
+                    <ChildComponent data={data} handleClose={handleClose} />
                 </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
-                
+            
                 
             </Modal.Actions>
         </Modal>

@@ -1,47 +1,27 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom'; 
+import './Navbar.css';
 
 const Navbar = () => {
-  const menuItem=[
-    {
-      path: "/",
-      name: "",
-      icon: <Icon name='search' />
-    },{
-      path: "/admin/productos",
-      name: "productos",
-      icon: <Icon name='search' />
-    },{
-      path: "/admin/usuarios",
-      name: "usuarios",
-      icon: <Icon name='search' />
-    },{
-      path: "/admin/stock",
-      name: "stock",
-      icon: <Icon name='search' />
-    },{
-      path: "/vendedor/ventas",
-      name: "ventas",
-      icon: <Icon name='search' />
-    },{
-      path: "/vendedor/inventario",
-      name: "inv",
-      icon: <Icon name='search' />
-    },{
-      path: "/cliente/citas",
-      name: "ci",
-      icon: <Icon name='search' />
-    },{
-      path: "*",
-      name: "error",
-      icon: <Icon name='search' />
-    },
-  ]
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="container">
-      <div className="sidebar">
-        .top
-      </div>
+    <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`} style={{ height: '100vh' }}>
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+        {isSidebarOpen ? 'Cerrar' : 'Abrir'}
+      </button>
+      <ul className="sidebar-menu">
+        <li><Link to="/">Inicio</Link></li>
+        <li><Link to="/admin/usuarios">usuarios</Link></li>
+        <li><Link to="/admin/productos">productos</Link></li>
+        <li><Link to="/admin/stock">stock</Link></li>
+        <li><Link to="/vendedor/ventas">Ventas</Link></li>
+      </ul>
     </div>
   )
 }

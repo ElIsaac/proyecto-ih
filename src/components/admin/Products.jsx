@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Tab, Header, Icon, Container, Divider } from 'semantic-ui-react';
 
 import ProductList from '../partials/Products/_ProductList'
 import ProductForm from '../partials/Products/_ProductForm'
-import { getProducts } from '../../api/apiCalls';
+import { AppContext } from '../../context/AppProvider';
 
 const Products = () => {
-  const products = getProducts()
+  const {products} = useContext( AppContext );
 
   const handleSubmit=(data)=>{
     console.log("sub")

@@ -1,5 +1,6 @@
+
 .background {
-    background-color: #f7c5cd;
+    background-color: #030303;
     position: absolute;
     top: 0;
     left: 0;
@@ -24,10 +25,19 @@
     transform: translateY(50%);
     transform-origin: bottom left;
   }
-  .zin{
+
+  .zin {
     z-index: -1;
   }
   
+  .full-height {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+  }
   
 .home-page {
     display: flex;
@@ -113,7 +123,7 @@
 
 /* Estilos para el botón de enviar del componente Form */
 .my-form button {
-  background-color: #ffb6c
+  background-color: #ffb6c1;
 }
 /* Estilos adicionales para el botón de enviar del componente Form */
 .my-form button {

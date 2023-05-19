@@ -5,10 +5,11 @@ const _ModalDelete = ({ data, setOpen, open, component, deleteFunction }) => {
     const handleClose = () => setOpen(false)
     const ChildComponent = component
 
-    const handleDelete = (id) => {
-        deleteFunction(id)
+    const handleDelete = async (id) => {
         setOpen(false)
+        deleteFunction(id)
     }
+      
 
     return (
         <>
@@ -21,13 +22,13 @@ const _ModalDelete = ({ data, setOpen, open, component, deleteFunction }) => {
             >
                 <Header icon>
                     <Icon name='trash' />
-                    Esta seguro que quiere eliminar {data.name} ({data.id})
+                    Esta seguro que quiere eliminar {data.name} ({data._id})
                 </Header>
                 <Modal.Actions>
                     <Button basic color='red' inverted onClick={()=>setOpen(false)}>
                         <Icon name='remove' /> No
                     </Button>
-                    <Button color='green' inverted onClick={()=>handleDelete(data.id)}>
+                    <Button color='green' inverted onClick={()=>handleDelete(data._id)}>
                         <Icon name='checkmark' /> Yes
                     </Button>
                 </Modal.Actions>
