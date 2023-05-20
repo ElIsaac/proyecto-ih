@@ -4,7 +4,7 @@ import { Form, Button, Select } from "semantic-ui-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from '../../../context/AppProvider';
 
-const _UserForm = ({ data, submitFunction }) => {
+const _UserForm = ({ data, submitFunction, handleClose }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
@@ -95,7 +95,7 @@ const _UserForm = ({ data, submitFunction }) => {
           content="Editar"
           labelPosition='right'
           icon='checkmark'
-          onClick={() => handleSubmit({ name, email, role, password })}
+          onClick={() => handleSubmit({ name, email, role, password },  !!data)}
           positive
         />
       </Form>
