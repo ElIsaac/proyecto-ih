@@ -49,6 +49,8 @@ export default function AppRouter() {
         </Route>
 
         <Route path="*" element={<NotFound />} />
+
+        <Route path="/auth/login" element={<Navigate to="/" />} />
       </Routes>
 
     </AppProvider>
