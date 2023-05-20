@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Segment,
-} from 'semantic-ui-react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
+import { Button, Checkbox, Form, Grid, Header, Image, Segment } from 'semantic-ui-react';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { updateAuth } = useContext( AuthContext );
+  const navigateTo = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -38,7 +34,8 @@ const LoginForm = () => {
       const data = await response.json();
       const { token } = data;
 
-      localStorage.setItem('token', token);
+      updateAuth(token)
+      navigateTo('/');
 
       // Realizar acciones adicionales después de guardar el token
 
@@ -80,10 +77,7 @@ const LoginForm = () => {
             </Button>
           </Segment>
         </Form>
-        <Segment>
-          <Checkbox label='Remember me' />
-          <a href='#'>Forgot Password?</a>
-        </Segment>
+        
       </Grid.Column>
     </Grid>
   );

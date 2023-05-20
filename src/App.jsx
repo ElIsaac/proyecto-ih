@@ -4,6 +4,7 @@ import AppRouter from './routes/routes.jsx'
 import Background from './Background.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
+import { AuthProvider } from './context/AuthProvider.jsx';
 
 export default function App() {
 
@@ -14,6 +15,7 @@ export default function App() {
 
         <Background className="background zin" />
 
+        <AuthProvider>
         <Grid>
           <Grid.Row>
 
@@ -27,6 +29,7 @@ export default function App() {
 
           </Grid.Row>
         </Grid>
+        </AuthProvider>
 
       </BrowserRouter>
     </>
