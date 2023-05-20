@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Select } from "semantic-ui-react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from '../../../context/AppProvider';
@@ -21,6 +21,12 @@ const _UserForm = ({ data, submitFunction }) => {
     setRole(data.role)
     setPassword(data.password)
   }
+
+  const roleOptions = [
+    { key: "admin", value: "admin", text: "Admin" },
+    { key: "saler", value: "saler", text: "Saler" },
+  ];
+  
 
   const handleSubmit = async (formData, isEditing) => {
     try {
@@ -70,16 +76,18 @@ const _UserForm = ({ data, submitFunction }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <Form.Field>
+          <label>Rol</label>
+          <Select
+            placeholder="Seleccionar rol"
+            options={roleOptions}
+            value={role}
+            onChange={(e, { value }) => setRole(value)}
+          />
+        </Form.Field>
         <Form.Input
-          label="Rol"
-          type="text"
-          step="0.01"
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-        />
-        <Form.Input
-          label="Contrasena"
-          type="text"
+          label="Contraseña"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -92,7 +100,8 @@ const _UserForm = ({ data, submitFunction }) => {
         />
       </Form>
     </>
-  )
+  );
+  
 }
 
 

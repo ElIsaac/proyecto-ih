@@ -47,13 +47,10 @@ const _ProductList = ({ products }) => {
                 {products.map((product, index) => (
                     <Card key={product.id}>
                         <Card.Content>
-                            <Image
-                                floated='right'
-                                size='mini'
-                                src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
-                            />
-                            <Card.Header>id {product.id}</Card.Header>
-                            <Card.Meta>{product.name} ${product.precio}</Card.Meta>
+                            
+                            <Card.Header><Icon name='edit'></Icon> {product.name}</Card.Header>
+                            <Card.Meta> id {product._id}</Card.Meta>
+                            <Card.Meta>${product.precio}</Card.Meta>
                             <Card.Description>
                                 {product.descripcion} <br /> <strong>cantidad:</strong> {product.cantidad}
                             </Card.Description>

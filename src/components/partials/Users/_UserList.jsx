@@ -54,8 +54,8 @@ const _UserList = ({ users }) => {
                                 size='mini'
                                 src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
                             />
-                            <Card.Header>id {user.id}</Card.Header>
-                            <Card.Meta>{user.name} </Card.Meta>
+                            <Card.Header>{user.name}</Card.Header>
+                            <Card.Meta>id {user._id}</Card.Meta>
                             <Card.Description>
                                 {user.email} <br /> <strong> {user.role} </strong> 
                             </Card.Description>

@@ -1,38 +1,73 @@
 .sidebar {
-    height: 100vh;
-    background-color: #333;
-    color: #fff;
-    transition: transform 0.3s ease-in-out;
-  }
   
-  .sidebar.open {
-    transform: translateX(0);
-  }
-  
-  .sidebar.closed {
-    transform: translateX(-200px);
-  }
-  
-  .sidebar-toggle {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .sidebar-menu {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar-menu li {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .sidebar-menu li:hover {
-    background-color: #555;
-  }
-  
+  background-color: #f1f1f1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+  transform: translateX(-100%); 
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar-menu {
+  margin-top: 50px;
+  padding: 0;
+  list-style: none;
+   opacity: 0; /* Establece la opacidad inicial a 0 */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar-menu h1 {
+  padding: 20px;
+  margin: 0;
+  background-color: #ddd;
+  color: #333;
+}
+
+.sidebar.open .sidebar-menu {
+  opacity: 1; /* Cambia la opacidad a 1 cuando el sidebar está abierto */
+}
+
+.sidebar-menu li {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.sidebar-menu li:last-child {
+  border-bottom: none;
+}
+
+.sidebar-menu li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.sidebar-menu li a:hover {
+  color: #000;
+}
+
+.logout-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ddd;
+  color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #ccc;
+}
