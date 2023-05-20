@@ -63,6 +63,7 @@ const Home = () => {
                   </Card.Description>
                 </Card.Content>
               </Card>
+              
             </Card.Group>
           </Grid.Column>
         </Grid>

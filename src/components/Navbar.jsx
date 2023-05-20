@@ -38,7 +38,7 @@ const Navbar = () => {
         <ul className="sidebar-menu">
           <h1>{user ? user.name : ''}</h1>
           <li>
-            <Link to="/">
+            <Link to="/home">
               <Icon name="home" />
               Inicio
             </Link>

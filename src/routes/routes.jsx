@@ -23,30 +23,29 @@ import { ProtectedRoute } from './ProtectedRoutes.jsx';
 export default function AppRouter() {
   const { user } = useContext(AuthContext);
   let adminAllow = false;
-if (user && user.role === 'admin') {
-  adminAllow = true;
-}
- 
+  if (user && user.role === 'admin') {
+    adminAllow = true;
+  }
+
   return (
     <AppProvider>
       <Routes>
 
-        <Route path="/" element={<Home />} />
+     
+          <Route path="/" element={ <ProtectedRoute isAllowed={!user} redirectTo='/' ><Login /></ProtectedRoute>} />
+        
 
-        <Route path="/admin" element={<ProtectedRoute isAllowed={adminAllow}/>}>
+        <Route path="/home" element={<Home />} />
+
+        <Route path="/admin" element={<ProtectedRoute isAllowed={adminAllow} />}>
           <Route path="productos" element={<Products />} />
           <Route path="stock" element={<Stock />} />
           <Route path="usuarios" element={<Users />} />
-        </Route> 
-
-        <Route path="/vendedor" element={<ProtectedRoute isAllowed={!!user}/>}>
-          <Route path="ventas" element={<NewSale />} />
-          <Route path="inventario" element={<Inventory />} />
         </Route>
 
-
-        <Route path="/auth" element={<ProtectedRoute isAllowed={!user} redirectTo='/' />}>
-          <Route path="login" element={<Login />} />
+        <Route path="/vendedor" element={<ProtectedRoute isAllowed={!!user} />}>
+          <Route path="ventas" element={<NewSale />} />
+          <Route path="inventario" element={<Inventory />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
