@@ -24,7 +24,7 @@ const _ProductForm = ({ data, submitFunction, handleClose }) => {
 
     const handleSubmit = async (formData, isEditing) => {
         try {
-            let url = 'http://localhost:3000/productos';
+            let url = 'https://proyecto-ihc.fly.dev/productos';
             let method = 'POST';
 
             if (isEditing) {

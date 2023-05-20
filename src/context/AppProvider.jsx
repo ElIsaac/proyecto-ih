@@ -12,7 +12,7 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
         const getUsers = async () => {
             try {
-                const response = await fetch('http://localhost:3000/usuarios/');
+                const response = await fetch('https://proyecto-ihc.fly.dev/usuarios/');
                 const data = await response.json();
                 setUsers(data);
             } catch (error) {
@@ -26,7 +26,7 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const response = await fetch('http://localhost:3000/productos/');
+                const response = await fetch('https://proyecto-ihc.fly.dev/productos/');
                 const data = await response.json();
                 setProducts(data);
             } catch (error) {

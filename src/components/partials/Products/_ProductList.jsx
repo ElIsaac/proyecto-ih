@@ -24,7 +24,7 @@ const _ProductList = ({ products }) => {
     }
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/productos/${id}`, {
+            const response = await fetch(`https://proyecto-ihc.fly.dev/productos/${id}`, {
                 method: 'DELETE',
             });
 

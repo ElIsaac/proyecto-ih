@@ -19,11 +19,11 @@ export default function App() {
         <Grid>
           <Grid.Row>
 
-            <Grid.Column width={2}>
+            <Grid.Column width={1}>
                 <Navbar className="full-height" />
             </Grid.Column>
 
-            <Grid.Column width={14}>
+            <Grid.Column width={15}>
               <AppRouter />
             </Grid.Column>
 

@@ -15,8 +15,7 @@ const TicketPreview = ({ cart, setCart, handleAction }) => {
         
       
         try {
-          // Realizar la petición POST a localhost:3000/tickets/
-          const response = await fetch('http://localhost:3000/tickets/', {
+          const response = await fetch('https://proyecto-ihc.fly.dev/tickets/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

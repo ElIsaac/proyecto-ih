@@ -30,7 +30,7 @@ const _UserForm = ({ data, submitFunction }) => {
 
   const handleSubmit = async (formData, isEditing) => {
     try {
-      let url = 'http://localhost:3000/usuarios';
+      let url = 'https://proyecto-ihc.fly.dev/usuarios';
       let method = 'POST';
 
       if (isEditing) {
